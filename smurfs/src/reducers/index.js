@@ -22,9 +22,15 @@ export const rootReducer = (state = initialState, action) => {
         smurfs: action.payload
       };
     case DELETE_SMURF:
-      return {};
+      return {
+        ...state,
+        smurfs: action.payload
+      };
     case ERROR:
-      return {};
+      return {
+        ...state,
+        error: action.payload
+      };
     default:
       return state;
   }
