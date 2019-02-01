@@ -14,11 +14,10 @@ class Form extends React.Component {
   };
 
   addSmurf = smurf => {
-    this.props.addSmurf(smurf);
+    this.props.addSmurf(this.stat);
     this.setState({
       name: "",
-      age: "",
-      height: ""
+      age: ""
     });
   };
 
@@ -49,7 +48,7 @@ class Form extends React.Component {
         <input
           type="button"
           value="Add Smurf"
-          onClick={() => this.addSmurf(this.state)}
+          onClick={() => this.props.addSmurf(this.state)}
         />
       </form>
     );

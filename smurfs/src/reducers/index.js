@@ -1,4 +1,10 @@
-import { FETCHED_DATA, ADD_SMURF, DELETE_SMURF, ERROR } from "../actions";
+import {
+  FETCHED_DATA,
+  ADD_SMURF,
+  DELETE_SMURF,
+  ERROR,
+  UPDATE_SMURF
+} from "../actions";
 
 const initialState = {
   smurfs: [],
@@ -22,6 +28,11 @@ export const rootReducer = (state = initialState, action) => {
         smurfs: action.payload
       };
     case DELETE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload
+      };
+    case UPDATE_SMURF:
       return {
         ...state,
         smurfs: action.payload

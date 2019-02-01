@@ -11,6 +11,11 @@ const Smurf = props => {
         value="X"
         onClick={e => props.deleteSmurf(props.id)}
       />
+      <input
+        type="button"
+        value="Update"
+        onClick={() => props.updateSmurf(props.id, this.state)}
+      />
     </div>
   );
 };

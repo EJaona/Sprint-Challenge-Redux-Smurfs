@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Smurf from "./Smurf";
-import { getData, addSmurf, deleteSmurf } from "../actions";
+import { getData, addSmurf, deleteSmurf, updateSmurf } from "../actions";
 import { connect } from "react-redux";
 
 import Form from "./Form";
@@ -17,6 +17,7 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.smurfs.map(smurf => (
           <Smurf
+            updateSmurf={this.props.updateSmurf}
             id={smurf.id}
             key={smurf.name}
             name={smurf.name}
@@ -25,7 +26,11 @@ class App extends Component {
             deleteSmurf={this.props.deleteSmurf}
           />
         ))}
-        <Form addSmurf={this.props.addSmurf} />
+        <Form
+          onChange={this.onchange}
+          state={this.state}
+          addSmurf={this.props.addSmurf}
+        />
       </div>
     );
   }
@@ -37,5 +42,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getData, addSmurf, deleteSmurf }
+  { getData, addSmurf, deleteSmurf, updateSmurf }
 )(App);

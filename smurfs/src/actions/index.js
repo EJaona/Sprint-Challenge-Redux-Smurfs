@@ -4,6 +4,7 @@ export const FETCHING_DATA = "FETCHING_DATA";
 export const FETCHED_DATA = "FETCHED_DATA";
 export const ADD_SMURF = "ADD_SMURF";
 export const DELETE_SMURF = "DELETE_SMURF";
+export const UPDATE_SMURF = "UPDATE_SMURF";
 export const ERROR = "ERROR";
 
 export const getData = _ => dispatch => {
@@ -25,6 +26,13 @@ export const deleteSmurf = id => dispatch => {
   axios
     .delete(`http://localhost:3333/smurfs/${id}`)
     .then(({ data }) => dispatch({ type: DELETE_SMURF, payload: data }))
+    .catch(err => dispatch({ type: ERROR, payload: err }));
+};
+
+export const updateSmurf = (id, updates) => dispatch => {
+  axios
+    .put(`http://localhost:3333/smurfs/${id}`, updates)
+    .then(({ data }) => dispatch({ type: UPDATE_SMURF, payload: data }))
     .catch(err => dispatch({ type: ERROR, payload: err }));
 };
 /*
